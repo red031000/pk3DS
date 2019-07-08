@@ -546,6 +546,7 @@ namespace pk3DS
             for (int i = 1; i < CB_TrainerID.Items.Count; i++)
             {
                 // Trainer Type/Mega Evo
+				// TODO allow all -> all, special -> special
                 int type = GetRandomType(i);
                 bool mevo = rEnsureMEvo.Contains(i);
                 bool typerand = (rTypeTheme && !rGymE4Only) || (rTypeTheme && rImportant[i] != null && ImportantClasses.Contains(rImportant[i]));

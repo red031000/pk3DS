@@ -30,6 +30,7 @@ namespace pk3DS.Core.Randomizers
         public int SpreadTo = 75;
         public bool STABFirst = true;
         public bool Learn4Level1 = false;
+        public bool AtLeast1Damaging = false;
         public bool OrderByPower = true;
 
         public bool STAB { set => moverand.rSTAB = value; }
@@ -49,8 +50,24 @@ namespace pk3DS.Core.Randomizers
 
             if (Learn4Level1)
             {
-                for (int i = 0; i < Math.Min(4, levels.Length); ++i)
-                    levels[i] = 1;
+	            for (int i = 0; i < Math.Min(4, levels.Length); ++i)
+	            {
+		            int last = levels[i];
+		            levels[i] = 1;
+		            if (!AtLeast1Damaging) continue;
+		            if (levels.Count(x => x == 1) != Math.Min(4, levels.Length)) continue;
+		            bool damage = false;
+		            for (int j = 0; j < levels.Count(x => x == 1); j++) damage |= moverand.IsMoveDamaging(moves[j]);
+
+		            if (damage || levels.Length < 4) continue;
+		            levels[i] = last;
+		            for (int j = 3; j < levels.Length; j++)
+		            {
+			            if (!moverand.IsMoveDamaging(moves[j])) continue;
+			            levels[j] = 1;
+			            break;
+		            }
+	            }
             }
 
             set.Moves = moves;

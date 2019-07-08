@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 using pk3DS.Core;
@@ -14,8 +15,9 @@ namespace pk3DS
         public int TableRandomizationOption { private get; set; }
         public decimal LevelAmplifier { private get; set; }
         public bool ModifyLevel { private get; set; }
+		public bool EveryNonLegendaryEncounter { private get; set; }
 
-        private void RandomizeTable7(EncounterTable Table, int slotStart, int slotStop)
+        private void RandomizeTable7(EncounterTable Table, int slotStart, int slotStop, ICollection<uint> selected)
         {
             int end = slotStop < 0 ? Table.Encounter7s.Length : slotStop;
             for (int s = slotStart; s < end; s++)
@@ -23,8 +25,18 @@ namespace pk3DS
                 var EncounterSet = Table.Encounter7s[s];
                 foreach (var enc in EncounterSet.Where(enc => enc.Species != 0))
                 {
-                    enc.Species = (uint)RandSpec.GetRandomSpecies((int)enc.Species);
-                    enc.Forme = (uint)RandForm.GetRandomForme((int)enc.Species);
+	                if (EveryNonLegendaryEncounter)
+	                {
+		                enc.Species = (uint) RandSpec.GetRandomSpeciesNotSelected((int) enc.Species,
+			                selected.Select(x => (int) x).ToList());
+		                selected.Add(enc.Species);
+	                }
+	                else
+	                {
+		                enc.Species = (uint) RandSpec.GetRandomSpecies((int) enc.Species);
+	                }
+
+	                enc.Forme = (uint)RandForm.GetRandomForme((int)enc.Species);
                 }
             }
         }
@@ -32,7 +44,7 @@ namespace pk3DS
         public void Execute(IEnumerable<Area7> Areas, lzGARCFile encdata)
         {
             GetTableRandSettings((RandOption)TableRandomizationOption, out int slotStart, out int slotStop, out bool copy);
-
+			List<uint> selected = new List<uint>();
             foreach (var Map in Areas)
             {
                 foreach (var Table in Map.Tables)
@@ -43,7 +55,7 @@ namespace pk3DS
                         Table.MaxLevel = Randomizer.getModifiedLevel(Table.MaxLevel, LevelAmplifier);
                     }
 
-                    RandomizeTable7(Table, slotStart, slotStop);
+                    RandomizeTable7(Table, slotStart, slotStop, selected);
                     if (copy) // copy row 0 to rest
                         Table.CopySlotsToSOS();
 

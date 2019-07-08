@@ -685,6 +685,26 @@ namespace pk3DS
                         tr.TrainerClass = (byte)rv;
                     }
 
+					//Any -> Any, Special -> Special
+					else if (!CHK_IgnoreSpecialClass.Checked && CHK_NormalAnySpecialSpecial.Checked)
+                    {
+	                    if (SpecialClasses.Contains(tr.TrainerClass))
+	                    {
+		                    int randClass() => SpecialClasses[Util.rnd32() & SpecialClasses.Length];
+		                    int rv; do { rv = randClass(); }
+							while (rv == 082);
+
+		                    tr.TrainerClass = (byte) rv;
+	                    }
+	                    else
+	                    {
+		                    int randClass() => (int)(Util.rnd32() % CB_Trainer_Class.Items.Count);
+		                    int rv; do { rv = randClass(); }
+		                    while (rv == 082); // Lusamine 2 can crash multi battles, skip
+		                    tr.TrainerClass = (byte)rv;
+						}
+                    }
+
                     // all classes
                     else if (!CHK_IgnoreSpecialClass.Checked)
                     {

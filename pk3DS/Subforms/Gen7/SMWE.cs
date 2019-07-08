@@ -427,6 +427,7 @@ namespace pk3DS
                 TableRandomizationOption = CB_SlotRand.SelectedIndex,
                 LevelAmplifier = NUD_LevelAmp.Value,
                 ModifyLevel = CHK_Level.Checked,
+				EveryNonLegendaryEncounter = CHK_EveryNonLegendaryEncounter.Checked,
             };
             wild7.Execute(Areas, encdata);
         }

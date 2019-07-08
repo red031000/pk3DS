@@ -10,6 +10,7 @@ namespace pk3DS.Core.Randomizers
         private readonly GameConfig Game;
         private readonly PersonalInfo[] SpeciesStat;
         private readonly int MaxSpeciesID;
+        public int[] speciesList { get; private set; }
 
         public SpeciesRandomizer(GameConfig config)
         {
@@ -23,8 +24,8 @@ namespace pk3DS.Core.Randomizers
         /// </summary>
         public void Initialize()
         {
-            var list = InitializeSpeciesList();
-            RandSpec = new GenericRandomizer(list);
+            speciesList = InitializeSpeciesList();
+            RandSpec = new GenericRandomizer(speciesList);
         }
 
         #region Randomizer Settings
@@ -48,6 +49,7 @@ namespace pk3DS.Core.Randomizers
         private int loopctr;
         private const int l = 10; // tweakable scalars
         private const int h = 11;
+		private List<int> legendary = new List<int>();
         #endregion
 
         internal int GetRandomSpecies(int oldSpecies, int bannedSpecies)
@@ -95,6 +97,29 @@ namespace pk3DS.Core.Randomizers
                 loopctr++;
             }
             return newSpecies;
+        }
+
+        public int GetRandomSpeciesNotSelected(int oldSpecies, List<int> selected)
+        {
+	        PersonalInfo oldpkmn = SpeciesStat[oldSpecies];
+
+	        loopctr = 0;
+	        int newSpecies;
+	        while (!GetNewSpecies(oldSpecies, oldpkmn, out newSpecies) ||
+	               selected.Contains(newSpecies) && !legendary.Contains(newSpecies))
+	        {
+		        if (loopctr > 0x0001_0000)
+		        {
+			        PersonalInfo pkm = SpeciesStat[newSpecies];
+			        if (IsSpeciesBSTBad(oldpkmn, pkm) && loopctr > 0x0001_1000)
+				        continue;
+			        return newSpecies;
+		        }
+
+		        loopctr++;
+	        }
+
+	        return newSpecies;
         }
 
         private bool IsSpeciesReplacementBad(int newSpecies, int currentSpecies)
@@ -152,8 +177,14 @@ namespace pk3DS.Core.Randomizers
             {
                 list.AddRange(Enumerable.Range(144, 3)); // Birds
                 list.Add(150); // Mewtwo
+				legendary.AddRange(Enumerable.Range(144, 3));
+				legendary.Add(150);
             }
-            if (E) list.Add(151); // Mew
+            if (E)
+            {
+	            list.Add(151); // Mew
+				legendary.Add(151);
+			}
         }
 
         private void AddGen2Species(List<int> list)
@@ -165,8 +196,15 @@ namespace pk3DS.Core.Randomizers
             {
                 list.AddRange(Enumerable.Range(243, 3)); // Raikou, Entei, Suicune
                 list.AddRange(Enumerable.Range(249, 2)); // Lugia & Ho-Oh
+                legendary.AddRange(Enumerable.Range(243, 3));
+                legendary.AddRange(Enumerable.Range(249, 2));
+			}
+
+            if (E)
+            {
+	            list.Add(251); // Celebi
+				legendary.Add(251);
             }
-            if (E) list.Add(251); // Celebi
         }
 
         private void AddGen3Species(List<int> list)
@@ -174,29 +212,66 @@ namespace pk3DS.Core.Randomizers
             list.AddRange(Enumerable.Range(252, 40)); // Treecko - Ninjask
             list.AddRange(Enumerable.Range(293, 84)); // Whismur - Metagross
             if (Shedinja) list.Add(292); // Shedinja
-            if (L) list.AddRange(Enumerable.Range(377, 8)); // Regi, Lati, Mascot
-            if (E) list.AddRange(Enumerable.Range(385, 2)); // Jirachi/Deoxys
+            if (L)
+            {
+	            list.AddRange(Enumerable.Range(377, 8)); // Regi, Lati, Mascot
+	            legendary.AddRange(Enumerable.Range(377, 8));
+			}
+            if (E)
+            {
+	            list.AddRange(Enumerable.Range(385, 2)); // Jirachi/Deoxys
+	            legendary.AddRange(Enumerable.Range(385, 2));
+			}
         }
 
         private void AddGen4Species(List<int> list)
         {
             list.AddRange(Enumerable.Range(387, 93)); // Turtwig - Rotom
-            if (L) list.AddRange(Enumerable.Range(480, 9)); // Sinnoh Legends
-            if (E) list.AddRange(Enumerable.Range(489, 5)); // Phione, Manaphy, Darkrai, Shaymin, Arceus
+            if (L)
+            {
+	            list.AddRange(Enumerable.Range(480, 9)); // Sinnoh Legends
+				legendary.AddRange(Enumerable.Range(480, 9));
+            }
+
+            if (E)
+            {
+	            list.AddRange(Enumerable.Range(489, 5)); // Phione, Manaphy, Darkrai, Shaymin, Arceus
+				legendary.AddRange(Enumerable.Range(489, 5));
+            }
         }
 
         private void AddGen5Species(List<int> list)
         {
             list.AddRange(Enumerable.Range(495, 143)); // Snivy - Volcarona
-            if (L) list.AddRange(Enumerable.Range(638, 9)); // Unova Legends
-            if (E) list.Add(494); list.AddRange(Enumerable.Range(647, 3)); // Victini, Keldeo, Meloetta, Genesect
+            if (L)
+            {
+	            list.AddRange(Enumerable.Range(638, 9)); // Unova Legends
+	            legendary.AddRange(Enumerable.Range(638, 9));
+			}
+
+            if (E)
+            {
+	            list.Add(494);
+	            list.AddRange(Enumerable.Range(647, 3)); // Victini, Keldeo, Meloetta, Genesect
+	            legendary.Add(494);
+	            legendary.AddRange(Enumerable.Range(647, 3));
+			}
         }
 
         private void AddGen6Species(List<int> list)
         {
             list.AddRange(Enumerable.Range(650, 66)); // Chespin - Noivern
-            if (L) list.AddRange(Enumerable.Range(716, 3)); // Kalos Legends
-            if (E) list.AddRange(Enumerable.Range(719, 3)); // Diancie, Hoopa, Volcanion
+            if (L)
+            {
+	            list.AddRange(Enumerable.Range(716, 3)); // Kalos Legends
+	            legendary.AddRange(Enumerable.Range(716, 3));
+			}
+
+            if (E)
+            {
+	            list.AddRange(Enumerable.Range(719, 3)); // Diancie, Hoopa, Volcanion
+	            legendary.AddRange(Enumerable.Range(719, 3));
+			}
         }
 
         private void AddGen7Species(List<int> list)
@@ -208,13 +283,28 @@ namespace pk3DS.Core.Randomizers
             {
                 list.AddRange(Enumerable.Range(772, 2)); // Type: Null, Silvally
                 list.AddRange(Enumerable.Range(785, 16)); // Tapus, Legends, UBs
-            }
-            if (E) list.AddRange(Enumerable.Range(801, 2)); // Magearna, Marshadow
-
-            if (MaxSpeciesID == 807) // USUM
+                legendary.AddRange(Enumerable.Range(772, 2));
+                legendary.AddRange(Enumerable.Range(785, 16));
+			}
+            if (E)
             {
-                if (L) list.AddRange(Enumerable.Range(803, 4)); // Poipole, Naganadel, Stakataka, Blacephalon
-                if (E) list.Add(807); // Zeraora
+	            list.AddRange(Enumerable.Range(801, 2)); // Magearna, Marshadow
+	            legendary.AddRange(Enumerable.Range(801, 2));
+            }
+
+			if (MaxSpeciesID == 807) // USUM
+            {
+                if (L)
+                {
+	                list.AddRange(Enumerable.Range(803, 4)); // Poipole, Naganadel, Stakataka, Blacephalon
+	                legendary.AddRange(Enumerable.Range(803, 4));
+                }
+
+				if (E)
+                {
+	                list.Add(807); // Zeraora
+					legendary.Add(807);
+                }
             }
         }
 

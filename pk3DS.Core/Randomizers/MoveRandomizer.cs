@@ -96,6 +96,12 @@ namespace pk3DS.Core.Randomizers
             return moves.Distinct().Count() == count;
         }
 
+        public bool IsMoveDamaging(int move)
+        {
+	        Move data = MoveData[move];
+	        return data.Power != 0; //TODO ugly hack, use category instead
+        }
+
         public void ReorderMovesPower(IList<int> moves)
         {
             var data = moves.Select((Move, Index) => new {Index, Move, Data = MoveData[Move]});
