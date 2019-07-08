@@ -200,6 +200,11 @@
 			this.CHK_RandomClass = new System.Windows.Forms.CheckBox();
 			this.CHK_ForceFullyEvolved = new System.Windows.Forms.CheckBox();
 			this.CHK_NormalAnySpecialSpecial = new System.Windows.Forms.CheckBox();
+			this.L_BSTOptions = new System.Windows.Forms.Label();
+			this.L_H = new System.Windows.Forms.Label();
+			this.NUD_H = new System.Windows.Forms.NumericUpDown();
+			this.NUD_L = new System.Windows.Forms.NumericUpDown();
+			this.L_L = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Team1)).BeginInit();
 			this.mnuVSD.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Team2)).BeginInit();
@@ -250,6 +255,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.NUD_ForceFullyEvolved)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_RMin)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_RMax)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_H)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_L)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// CB_TrainerID
@@ -2087,6 +2094,11 @@
 			// 
 			// Tab_Trainer1
 			// 
+			this.Tab_Trainer1.Controls.Add(this.L_L);
+			this.Tab_Trainer1.Controls.Add(this.NUD_L);
+			this.Tab_Trainer1.Controls.Add(this.NUD_H);
+			this.Tab_Trainer1.Controls.Add(this.L_H);
+			this.Tab_Trainer1.Controls.Add(this.L_BSTOptions);
 			this.Tab_Trainer1.Controls.Add(this.CHK_NormalAnySpecialSpecial);
 			this.Tab_Trainer1.Controls.Add(this.CHK_ReplaceMega);
 			this.Tab_Trainer1.Controls.Add(this.CHK_6PKM);
@@ -2280,6 +2292,67 @@
 			this.CHK_NormalAnySpecialSpecial.Text = "Normal -> Any, Special -> Special";
 			this.CHK_NormalAnySpecialSpecial.UseVisualStyleBackColor = true;
 			// 
+			// L_BSTOptions
+			// 
+			this.L_BSTOptions.AutoSize = true;
+			this.L_BSTOptions.Location = new System.Drawing.Point(238, 51);
+			this.L_BSTOptions.Name = "L_BSTOptions";
+			this.L_BSTOptions.Size = new System.Drawing.Size(70, 13);
+			this.L_BSTOptions.TabIndex = 345;
+			this.L_BSTOptions.Text = "BST Options:";
+			// 
+			// L_H
+			// 
+			this.L_H.AutoSize = true;
+			this.L_H.Location = new System.Drawing.Point(282, 74);
+			this.L_H.Name = "L_H";
+			this.L_H.Size = new System.Drawing.Size(16, 13);
+			this.L_H.TabIndex = 346;
+			this.L_H.Text = "h:";
+			// 
+			// NUD_H
+			// 
+			this.NUD_H.Location = new System.Drawing.Point(301, 72);
+			this.NUD_H.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.NUD_H.Name = "NUD_H";
+			this.NUD_H.Size = new System.Drawing.Size(40, 20);
+			this.NUD_H.TabIndex = 347;
+			this.NUD_H.Value = new decimal(new int[] {
+            11,
+            0,
+            0,
+            0});
+			// 
+			// NUD_L
+			// 
+			this.NUD_L.Location = new System.Drawing.Point(301, 94);
+			this.NUD_L.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.NUD_L.Name = "NUD_L";
+			this.NUD_L.Size = new System.Drawing.Size(40, 20);
+			this.NUD_L.TabIndex = 348;
+			this.NUD_L.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			// 
+			// L_L
+			// 
+			this.L_L.AutoSize = true;
+			this.L_L.Location = new System.Drawing.Point(286, 96);
+			this.L_L.Name = "L_L";
+			this.L_L.Size = new System.Drawing.Size(12, 13);
+			this.L_L.TabIndex = 349;
+			this.L_L.Text = "l:";
+			// 
 			// SMTE
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2360,6 +2433,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.NUD_ForceFullyEvolved)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_RMin)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_RMax)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_H)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_L)).EndInit();
 			this.ResumeLayout(false);
 
         }
@@ -2536,6 +2611,11 @@
         private System.Windows.Forms.CheckBox CHK_AI0;
         private System.Windows.Forms.CheckBox CHK_AI7;
 		private System.Windows.Forms.CheckBox CHK_NormalAnySpecialSpecial;
+		private System.Windows.Forms.NumericUpDown NUD_H;
+		private System.Windows.Forms.Label L_H;
+		private System.Windows.Forms.Label L_BSTOptions;
+		private System.Windows.Forms.Label L_L;
+		private System.Windows.Forms.NumericUpDown NUD_L;
 	}
 }
 

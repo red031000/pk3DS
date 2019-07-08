@@ -47,8 +47,8 @@ namespace pk3DS.Core.Randomizers
         #region Random Species Filtering Parameters
         private GenericRandomizer RandSpec;
         private int loopctr;
-        private const int l = 10; // tweakable scalars
-        private const int h = 11;
+        public int l = 10; // tweakable scalars
+        public int h = 11;
 		private List<int> legendary = new List<int>();
         #endregion
 

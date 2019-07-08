@@ -31,6 +31,7 @@ namespace pk3DS
             Close();
         }
 
+		//TODO BST Options
         private void B_Save_Click(object sender, EventArgs e)
         {
             if (WinFormsUtil.Prompt(MessageBoxButtons.YesNo, "Randomize all? Cannot undo.", "Double check Randomization settings before continuing.") != DialogResult.Yes)

@@ -413,6 +413,8 @@ namespace pk3DS
                 E = CHK_E.Checked,
                 L = CHK_L.Checked,
                 rBST = CHK_BST.Checked,
+				l = (int)NUD_L.Value,
+				h = (int)NUD_H.Value
             };
             rnd.Initialize();
             var form = new FormRandomizer(Main.Config)
@@ -569,7 +571,7 @@ namespace pk3DS
         }
     }
 
-    public static partial class Extensions
+	public static partial class Extensions
     {
         public static Bitmap GetTableImg(this EncounterTable table, Font font)
         {

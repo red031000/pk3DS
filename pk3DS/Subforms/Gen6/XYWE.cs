@@ -528,9 +528,11 @@ namespace pk3DS
                 Shedinja = false,
 
                 rBST = CHK_BST.Checked,
+				h = (int)NUD_H.Value,
+				l = (int)NUD_L.Value,
             };
             rand.Initialize();
-
+			//TODO Every Non-Legendary Mon randomisation
             for (int i = 0; i < CB_LocationID.Items.Count; i++) // for every location
             {
                 CB_LocationID.SelectedIndex = i;

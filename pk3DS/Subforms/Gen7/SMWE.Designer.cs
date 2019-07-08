@@ -48,6 +48,12 @@
 			this.B_Paste = new System.Windows.Forms.Button();
 			this.B_Copy = new System.Windows.Forms.Button();
 			this.GB_Tweak = new System.Windows.Forms.GroupBox();
+			this.NUD_L = new System.Windows.Forms.NumericUpDown();
+			this.L_L = new System.Windows.Forms.Label();
+			this.L_H = new System.Windows.Forms.Label();
+			this.NUD_H = new System.Windows.Forms.NumericUpDown();
+			this.L_BSTOpt = new System.Windows.Forms.Label();
+			this.CHK_EveryNonLegendaryEncounter = new System.Windows.Forms.CheckBox();
 			this.CB_SlotRand = new System.Windows.Forms.ComboBox();
 			this.L_SOS = new System.Windows.Forms.Label();
 			this.CHK_G7 = new System.Windows.Forms.CheckBox();
@@ -264,11 +270,12 @@
 			this.CB_TableID = new System.Windows.Forms.ComboBox();
 			this.B_Export = new System.Windows.Forms.Button();
 			this.CopySOS = new System.Windows.Forms.Button();
-			this.CHK_EveryNonLegendaryEncounter = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.NUP_Min)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUP_Max)).BeginInit();
 			this.GB_Encounters.SuspendLayout();
 			this.GB_Tweak.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_L)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_H)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_LevelAmp)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PB_NightIcon)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.PB_DayIcon)).BeginInit();
@@ -694,7 +701,7 @@
 			this.GB_Encounters.Controls.Add(this.NUP_Rate1);
 			this.GB_Encounters.Location = new System.Drawing.Point(14, 39);
 			this.GB_Encounters.Name = "GB_Encounters";
-			this.GB_Encounters.Size = new System.Drawing.Size(1138, 561);
+			this.GB_Encounters.Size = new System.Drawing.Size(1138, 599);
 			this.GB_Encounters.TabIndex = 430;
 			this.GB_Encounters.TabStop = false;
 			this.GB_Encounters.Text = "Encounters (100%)";
@@ -778,6 +785,11 @@
 			// 
 			// GB_Tweak
 			// 
+			this.GB_Tweak.Controls.Add(this.NUD_L);
+			this.GB_Tweak.Controls.Add(this.L_L);
+			this.GB_Tweak.Controls.Add(this.L_H);
+			this.GB_Tweak.Controls.Add(this.NUD_H);
+			this.GB_Tweak.Controls.Add(this.L_BSTOpt);
 			this.GB_Tweak.Controls.Add(this.CHK_EveryNonLegendaryEncounter);
 			this.GB_Tweak.Controls.Add(this.CB_SlotRand);
 			this.GB_Tweak.Controls.Add(this.L_SOS);
@@ -798,10 +810,81 @@
 			this.GB_Tweak.Controls.Add(this.CHK_Level);
 			this.GB_Tweak.Location = new System.Drawing.Point(14, 405);
 			this.GB_Tweak.Name = "GB_Tweak";
-			this.GB_Tweak.Size = new System.Drawing.Size(282, 150);
+			this.GB_Tweak.Size = new System.Drawing.Size(282, 188);
 			this.GB_Tweak.TabIndex = 507;
 			this.GB_Tweak.TabStop = false;
 			this.GB_Tweak.Text = "Extra Randomization Tweaks";
+			// 
+			// NUD_L
+			// 
+			this.NUD_L.Location = new System.Drawing.Point(108, 165);
+			this.NUD_L.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.NUD_L.Name = "NUD_L";
+			this.NUD_L.Size = new System.Drawing.Size(41, 20);
+			this.NUD_L.TabIndex = 305;
+			this.NUD_L.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			// 
+			// L_L
+			// 
+			this.L_L.AutoSize = true;
+			this.L_L.Location = new System.Drawing.Point(93, 167);
+			this.L_L.Name = "L_L";
+			this.L_L.Size = new System.Drawing.Size(12, 13);
+			this.L_L.TabIndex = 304;
+			this.L_L.Text = "l:";
+			// 
+			// L_H
+			// 
+			this.L_H.AutoSize = true;
+			this.L_H.Location = new System.Drawing.Point(18, 167);
+			this.L_H.Name = "L_H";
+			this.L_H.Size = new System.Drawing.Size(16, 13);
+			this.L_H.TabIndex = 303;
+			this.L_H.Text = "h:";
+			// 
+			// NUD_H
+			// 
+			this.NUD_H.Location = new System.Drawing.Point(37, 165);
+			this.NUD_H.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.NUD_H.Name = "NUD_H";
+			this.NUD_H.Size = new System.Drawing.Size(40, 20);
+			this.NUD_H.TabIndex = 302;
+			this.NUD_H.Value = new decimal(new int[] {
+            11,
+            0,
+            0,
+            0});
+			// 
+			// L_BSTOpt
+			// 
+			this.L_BSTOpt.AutoSize = true;
+			this.L_BSTOpt.Location = new System.Drawing.Point(16, 150);
+			this.L_BSTOpt.Name = "L_BSTOpt";
+			this.L_BSTOpt.Size = new System.Drawing.Size(70, 13);
+			this.L_BSTOpt.TabIndex = 301;
+			this.L_BSTOpt.Text = "BST Options:";
+			// 
+			// CHK_EveryNonLegendaryEncounter
+			// 
+			this.CHK_EveryNonLegendaryEncounter.AutoSize = true;
+			this.CHK_EveryNonLegendaryEncounter.Location = new System.Drawing.Point(19, 112);
+			this.CHK_EveryNonLegendaryEncounter.Name = "CHK_EveryNonLegendaryEncounter";
+			this.CHK_EveryNonLegendaryEncounter.Size = new System.Drawing.Size(181, 17);
+			this.CHK_EveryNonLegendaryEncounter.TabIndex = 300;
+			this.CHK_EveryNonLegendaryEncounter.Text = "Every Non-Legendary Encounter";
+			this.CHK_EveryNonLegendaryEncounter.UseVisualStyleBackColor = true;
 			// 
 			// CB_SlotRand
 			// 
@@ -1176,7 +1259,7 @@
 			this.PB_NightTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.PB_NightTable.Location = new System.Drawing.Point(732, 255);
 			this.PB_NightTable.Name = "PB_NightTable";
-			this.PB_NightTable.Size = new System.Drawing.Size(400, 300);
+			this.PB_NightTable.Size = new System.Drawing.Size(400, 338);
 			this.PB_NightTable.TabIndex = 491;
 			this.PB_NightTable.TabStop = false;
 			// 
@@ -1185,7 +1268,7 @@
 			this.PB_DayTable.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.PB_DayTable.Location = new System.Drawing.Point(302, 255);
 			this.PB_DayTable.Name = "PB_DayTable";
-			this.PB_DayTable.Size = new System.Drawing.Size(400, 300);
+			this.PB_DayTable.Size = new System.Drawing.Size(400, 338);
 			this.PB_DayTable.TabIndex = 490;
 			this.PB_DayTable.TabStop = false;
 			// 
@@ -3141,21 +3224,11 @@
 			this.CopySOS.UseVisualStyleBackColor = true;
 			this.CopySOS.Click += new System.EventHandler(this.CopySOS_Click);
 			// 
-			// CHK_EveryNonLegendaryEncounter
-			// 
-			this.CHK_EveryNonLegendaryEncounter.AutoSize = true;
-			this.CHK_EveryNonLegendaryEncounter.Location = new System.Drawing.Point(19, 112);
-			this.CHK_EveryNonLegendaryEncounter.Name = "CHK_EveryNonLegendaryEncounter";
-			this.CHK_EveryNonLegendaryEncounter.Size = new System.Drawing.Size(181, 17);
-			this.CHK_EveryNonLegendaryEncounter.TabIndex = 300;
-			this.CHK_EveryNonLegendaryEncounter.Text = "Every Non-Legendary Encounter";
-			this.CHK_EveryNonLegendaryEncounter.UseVisualStyleBackColor = true;
-			// 
 			// SMWE
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1161, 612);
+			this.ClientSize = new System.Drawing.Size(1161, 641);
 			this.Controls.Add(this.CopySOS);
 			this.Controls.Add(this.B_Export);
 			this.Controls.Add(this.CB_TableID);
@@ -3179,6 +3252,8 @@
 			this.GB_Encounters.PerformLayout();
 			this.GB_Tweak.ResumeLayout(false);
 			this.GB_Tweak.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_L)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_H)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_LevelAmp)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PB_NightIcon)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.PB_DayIcon)).EndInit();
@@ -3524,5 +3599,10 @@
         private System.Windows.Forms.Label L_Weather1;
         private System.Windows.Forms.Label L_Weather0;
 		private System.Windows.Forms.CheckBox CHK_EveryNonLegendaryEncounter;
+		private System.Windows.Forms.Label L_H;
+		private System.Windows.Forms.NumericUpDown NUD_H;
+		private System.Windows.Forms.Label L_BSTOpt;
+		private System.Windows.Forms.NumericUpDown NUD_L;
+		private System.Windows.Forms.Label L_L;
 	}
 }
