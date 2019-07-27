@@ -47,12 +47,17 @@ namespace pk3DS.Core.Randomizers
         {
             int[] moves = GetRandomMoves(set.Count, index);
             int[] levels = GetRandomLevels(set, moves.Length);
-
+            int low = 4;
             if (Learn4Level1)
             {
-	            for (int i = 0; i < Math.Min(4, levels.Length); ++i)
+	            for (int i = 0; i < Math.Min(low, levels.Length); ++i)
 	            {
 		            int last = levels[i];
+		            if (moves.Count(x => x == moves[i]) > 1)
+		            {
+			            low++;
+						continue;
+		            }
 		            levels[i] = 1;
 		            if (!AtLeast1Damaging) continue;
 		            if (levels.Count(x => x == 1) < Math.Min(4, levels.Length)) continue;

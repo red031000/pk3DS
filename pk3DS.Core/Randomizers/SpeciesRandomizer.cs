@@ -105,9 +105,9 @@ namespace pk3DS.Core.Randomizers
 
 	        loopctr = 0;
 	        int newSpecies;
+	        bool except = !selected.Except(speciesList).Any();
 	        while (!GetNewSpecies(oldSpecies, oldpkmn, out newSpecies) ||
-	               !selected.Except(speciesList).Any() && !legendary.Contains(newSpecies) &&
-	               selected.Contains(newSpecies))
+	               except && !legendary.Contains(newSpecies) && selected.Contains(newSpecies))
 			{
 				if (loopctr > 0x0001_0000)
 		        {
