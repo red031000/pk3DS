@@ -693,7 +693,7 @@ namespace pk3DS
                     {
 	                    if (SpecialClasses.Contains(tr.TrainerClass))
 	                    {
-		                    int randClass() => SpecialClasses[Util.rnd32() & SpecialClasses.Length];
+		                    int randClass() => SpecialClasses[Util.rnd32() % SpecialClasses.Length];
 		                    int rv; do { rv = randClass(); }
 							while (rv == 082);
 

@@ -106,9 +106,10 @@ namespace pk3DS.Core.Randomizers
 	        loopctr = 0;
 	        int newSpecies;
 	        while (!GetNewSpecies(oldSpecies, oldpkmn, out newSpecies) ||
-	               selected.Contains(newSpecies) && !legendary.Contains(newSpecies))
-	        {
-		        if (loopctr > 0x0001_0000)
+	               !selected.Except(speciesList).Any() && !legendary.Contains(newSpecies) &&
+	               selected.Contains(newSpecies))
+			{
+				if (loopctr > 0x0001_0000)
 		        {
 			        PersonalInfo pkm = SpeciesStat[newSpecies];
 			        if (IsSpeciesBSTBad(oldpkmn, pkm) && loopctr > 0x0001_1000)

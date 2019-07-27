@@ -55,7 +55,7 @@ namespace pk3DS.Core.Randomizers
 		            int last = levels[i];
 		            levels[i] = 1;
 		            if (!AtLeast1Damaging) continue;
-		            if (levels.Count(x => x == 1) != Math.Min(4, levels.Length)) continue;
+		            if (levels.Count(x => x == 1) < Math.Min(4, levels.Length)) continue;
 		            bool damage = false;
 		            for (int j = 0; j < levels.Count(x => x == 1); j++) damage |= moverand.IsMoveDamaging(moves[j]);
 
