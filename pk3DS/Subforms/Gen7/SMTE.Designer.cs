@@ -187,6 +187,12 @@
 			this.CHK_RandomItems = new System.Windows.Forms.CheckBox();
 			this.CHK_STAB = new System.Windows.Forms.CheckBox();
 			this.Tab_Trainer1 = new System.Windows.Forms.TabPage();
+			this.L_L = new System.Windows.Forms.Label();
+			this.NUD_L = new System.Windows.Forms.NumericUpDown();
+			this.NUD_H = new System.Windows.Forms.NumericUpDown();
+			this.L_H = new System.Windows.Forms.Label();
+			this.L_BSTOptions = new System.Windows.Forms.Label();
+			this.CHK_NormalAnySpecialSpecial = new System.Windows.Forms.CheckBox();
 			this.CHK_ReplaceMega = new System.Windows.Forms.CheckBox();
 			this.CHK_6PKM = new System.Windows.Forms.CheckBox();
 			this.NUD_ForceFullyEvolved = new System.Windows.Forms.NumericUpDown();
@@ -199,12 +205,6 @@
 			this.CHK_IgnoreSpecialClass = new System.Windows.Forms.CheckBox();
 			this.CHK_RandomClass = new System.Windows.Forms.CheckBox();
 			this.CHK_ForceFullyEvolved = new System.Windows.Forms.CheckBox();
-			this.CHK_NormalAnySpecialSpecial = new System.Windows.Forms.CheckBox();
-			this.L_BSTOptions = new System.Windows.Forms.Label();
-			this.L_H = new System.Windows.Forms.Label();
-			this.NUD_H = new System.Windows.Forms.NumericUpDown();
-			this.NUD_L = new System.Windows.Forms.NumericUpDown();
-			this.L_L = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Team1)).BeginInit();
 			this.mnuVSD.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PB_Team2)).BeginInit();
@@ -252,11 +252,11 @@
 			((System.ComponentModel.ISupportInitialize)(this.NUD_Damage)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_STAB)).BeginInit();
 			this.Tab_Trainer1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_L)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_H)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_ForceFullyEvolved)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_RMin)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_RMax)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.NUD_H)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.NUD_L)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// CB_TrainerID
@@ -2119,6 +2119,77 @@
 			this.Tab_Trainer1.Text = "Trainer";
 			this.Tab_Trainer1.UseVisualStyleBackColor = true;
 			// 
+			// L_L
+			// 
+			this.L_L.AutoSize = true;
+			this.L_L.Location = new System.Drawing.Point(286, 96);
+			this.L_L.Name = "L_L";
+			this.L_L.Size = new System.Drawing.Size(12, 13);
+			this.L_L.TabIndex = 349;
+			this.L_L.Text = "l:";
+			// 
+			// NUD_L
+			// 
+			this.NUD_L.Location = new System.Drawing.Point(301, 94);
+			this.NUD_L.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+			this.NUD_L.Name = "NUD_L";
+			this.NUD_L.Size = new System.Drawing.Size(40, 20);
+			this.NUD_L.TabIndex = 348;
+			this.NUD_L.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+			// 
+			// NUD_H
+			// 
+			this.NUD_H.Location = new System.Drawing.Point(301, 72);
+			this.NUD_H.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+			this.NUD_H.Name = "NUD_H";
+			this.NUD_H.Size = new System.Drawing.Size(40, 20);
+			this.NUD_H.TabIndex = 347;
+			this.NUD_H.Value = new decimal(new int[] {
+            11,
+            0,
+            0,
+            0});
+			// 
+			// L_H
+			// 
+			this.L_H.AutoSize = true;
+			this.L_H.Location = new System.Drawing.Point(282, 74);
+			this.L_H.Name = "L_H";
+			this.L_H.Size = new System.Drawing.Size(16, 13);
+			this.L_H.TabIndex = 346;
+			this.L_H.Text = "h:";
+			// 
+			// L_BSTOptions
+			// 
+			this.L_BSTOptions.AutoSize = true;
+			this.L_BSTOptions.Location = new System.Drawing.Point(238, 51);
+			this.L_BSTOptions.Name = "L_BSTOptions";
+			this.L_BSTOptions.Size = new System.Drawing.Size(70, 13);
+			this.L_BSTOptions.TabIndex = 345;
+			this.L_BSTOptions.Text = "BST Options:";
+			// 
+			// CHK_NormalAnySpecialSpecial
+			// 
+			this.CHK_NormalAnySpecialSpecial.AutoSize = true;
+			this.CHK_NormalAnySpecialSpecial.Location = new System.Drawing.Point(6, 47);
+			this.CHK_NormalAnySpecialSpecial.Name = "CHK_NormalAnySpecialSpecial";
+			this.CHK_NormalAnySpecialSpecial.Size = new System.Drawing.Size(183, 17);
+			this.CHK_NormalAnySpecialSpecial.TabIndex = 344;
+			this.CHK_NormalAnySpecialSpecial.Text = "Normal -> Any, Special -> Special";
+			this.CHK_NormalAnySpecialSpecial.UseVisualStyleBackColor = true;
+			// 
 			// CHK_ReplaceMega
 			// 
 			this.CHK_ReplaceMega.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
@@ -2282,77 +2353,6 @@
 			this.CHK_ForceFullyEvolved.Text = "Force Fully Evolved at Level";
 			this.CHK_ForceFullyEvolved.UseVisualStyleBackColor = true;
 			// 
-			// CHK_NormalAnySpecialSpecial
-			// 
-			this.CHK_NormalAnySpecialSpecial.AutoSize = true;
-			this.CHK_NormalAnySpecialSpecial.Location = new System.Drawing.Point(6, 47);
-			this.CHK_NormalAnySpecialSpecial.Name = "CHK_NormalAnySpecialSpecial";
-			this.CHK_NormalAnySpecialSpecial.Size = new System.Drawing.Size(183, 17);
-			this.CHK_NormalAnySpecialSpecial.TabIndex = 344;
-			this.CHK_NormalAnySpecialSpecial.Text = "Normal -> Any, Special -> Special";
-			this.CHK_NormalAnySpecialSpecial.UseVisualStyleBackColor = true;
-			// 
-			// L_BSTOptions
-			// 
-			this.L_BSTOptions.AutoSize = true;
-			this.L_BSTOptions.Location = new System.Drawing.Point(238, 51);
-			this.L_BSTOptions.Name = "L_BSTOptions";
-			this.L_BSTOptions.Size = new System.Drawing.Size(70, 13);
-			this.L_BSTOptions.TabIndex = 345;
-			this.L_BSTOptions.Text = "BST Options:";
-			// 
-			// L_H
-			// 
-			this.L_H.AutoSize = true;
-			this.L_H.Location = new System.Drawing.Point(282, 74);
-			this.L_H.Name = "L_H";
-			this.L_H.Size = new System.Drawing.Size(16, 13);
-			this.L_H.TabIndex = 346;
-			this.L_H.Text = "h:";
-			// 
-			// NUD_H
-			// 
-			this.NUD_H.Location = new System.Drawing.Point(301, 72);
-			this.NUD_H.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.NUD_H.Name = "NUD_H";
-			this.NUD_H.Size = new System.Drawing.Size(40, 20);
-			this.NUD_H.TabIndex = 347;
-			this.NUD_H.Value = new decimal(new int[] {
-            11,
-            0,
-            0,
-            0});
-			// 
-			// NUD_L
-			// 
-			this.NUD_L.Location = new System.Drawing.Point(301, 94);
-			this.NUD_L.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-			this.NUD_L.Name = "NUD_L";
-			this.NUD_L.Size = new System.Drawing.Size(40, 20);
-			this.NUD_L.TabIndex = 348;
-			this.NUD_L.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-			// 
-			// L_L
-			// 
-			this.L_L.AutoSize = true;
-			this.L_L.Location = new System.Drawing.Point(286, 96);
-			this.L_L.Name = "L_L";
-			this.L_L.Size = new System.Drawing.Size(12, 13);
-			this.L_L.TabIndex = 349;
-			this.L_L.Text = "l:";
-			// 
 			// SMTE
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2430,11 +2430,11 @@
 			((System.ComponentModel.ISupportInitialize)(this.NUD_STAB)).EndInit();
 			this.Tab_Trainer1.ResumeLayout(false);
 			this.Tab_Trainer1.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_L)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.NUD_H)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_ForceFullyEvolved)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_RMin)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_RMax)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.NUD_H)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.NUD_L)).EndInit();
 			this.ResumeLayout(false);
 
         }

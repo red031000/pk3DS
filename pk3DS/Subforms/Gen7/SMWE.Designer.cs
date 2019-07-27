@@ -819,7 +819,7 @@
 			// 
 			this.NUD_L.Location = new System.Drawing.Point(108, 165);
 			this.NUD_L.Minimum = new decimal(new int[] {
-            1,
+            2,
             0,
             0,
             0});
