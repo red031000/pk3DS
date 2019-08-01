@@ -105,10 +105,13 @@ namespace pk3DS.Core.Randomizers
 
 	        loopctr = 0;
 	        int newSpecies;
-	        bool except = !selected.Except(speciesList).Any();
-	        while (!GetNewSpecies(oldSpecies, oldpkmn, out newSpecies) ||
-	               except && !legendary.Contains(newSpecies) && selected.Contains(newSpecies))
+	        bool except = !speciesList.Except(selected).Except(legendary).Any();
+	        while (!GetNewSpecies(oldSpecies, oldpkmn, out newSpecies) 
+	               || !except && selected.Contains(newSpecies))
 			{
+				if (legendary.Contains(newSpecies) && !legendary.Contains(oldSpecies) && loopctr < 0x10)
+					continue;
+
 				if (loopctr > 0x0001_0000)
 		        {
 			        PersonalInfo pkm = SpeciesStat[newSpecies];
@@ -311,21 +314,26 @@ namespace pk3DS.Core.Randomizers
 
         public int[] RandomSpeciesList => Enumerable.Range(1, MaxSpeciesID).ToArray();
 
+        private bool IsSpeciesGood(int currentSpecies, PersonalInfo oldpkm, int newSpecies, PersonalInfo pkm)
+        {
+	        if (IsSpeciesReplacementBad(newSpecies, currentSpecies)) // no A->A randomization
+		        return false;
+	        if (IsSpeciesEXPRateBad(oldpkm, pkm))
+		        return false;
+	        if (IsSpeciesTypeBad(oldpkm, pkm))
+		        return false;
+	        if (IsSpeciesBSTBad(oldpkm, pkm))
+		        return false;
+	        return true;
+        }
+
         private bool GetNewSpecies(int currentSpecies, PersonalInfo oldpkm, out int newSpecies)
         {
             newSpecies = RandSpec.Next();
             PersonalInfo pkm = SpeciesStat[newSpecies];
 
             // Verify it meets specifications
-            if (IsSpeciesReplacementBad(newSpecies, currentSpecies)) // no A->A randomization
-                return false;
-            if (IsSpeciesEXPRateBad(oldpkm, pkm))
-                return false;
-            if (IsSpeciesTypeBad(oldpkm, pkm))
-                return false;
-            if (IsSpeciesBSTBad(oldpkm, pkm))
-                return false;
-            return true;
+			return IsSpeciesGood(currentSpecies, oldpkm, newSpecies, pkm);
         }
     }
 }

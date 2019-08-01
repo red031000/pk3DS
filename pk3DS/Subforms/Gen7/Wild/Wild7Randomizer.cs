@@ -29,7 +29,8 @@ namespace pk3DS
 	                {
 		                enc.Species = (uint) RandSpec.GetRandomSpeciesNotSelected((int) enc.Species,
 			                selected.Select(x => (int) x).ToList());
-		                selected.Add(enc.Species);
+						if (!selected.Contains(enc.Species))
+							selected.Add(enc.Species);
 	                }
 	                else
 	                {
