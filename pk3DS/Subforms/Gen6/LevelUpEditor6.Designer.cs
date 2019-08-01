@@ -34,6 +34,7 @@
 			this.B_RandAll = new System.Windows.Forms.Button();
 			this.B_Dump = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.CHK_1Damaging = new System.Windows.Forms.CheckBox();
 			this.CHK_NoFixedDamage = new System.Windows.Forms.CheckBox();
 			this.CHK_4MovesLvl1 = new System.Windows.Forms.CheckBox();
 			this.L_Moves = new System.Windows.Forms.Label();
@@ -49,7 +50,8 @@
 			this.CHK_HMs = new System.Windows.Forms.CheckBox();
 			this.PB_MonSprite = new System.Windows.Forms.PictureBox();
 			this.B_Metronome = new System.Windows.Forms.Button();
-			this.CHK_1Damaging = new System.Windows.Forms.CheckBox();
+			this.CHK_OrderByPower = new System.Windows.Forms.CheckBox();
+			this.CHK_RandomFirstMove = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.NUD_Moves)).BeginInit();
@@ -68,7 +70,7 @@
 			this.dgv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgv.Location = new System.Drawing.Point(4, 41);
 			this.dgv.Name = "dgv";
-			this.dgv.Size = new System.Drawing.Size(282, 359);
+			this.dgv.Size = new System.Drawing.Size(282, 416);
 			this.dgv.TabIndex = 0;
 			// 
 			// CB_Species
@@ -116,6 +118,8 @@
 			// 
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.CHK_RandomFirstMove);
+			this.groupBox1.Controls.Add(this.CHK_OrderByPower);
 			this.groupBox1.Controls.Add(this.CHK_1Damaging);
 			this.groupBox1.Controls.Add(this.CHK_NoFixedDamage);
 			this.groupBox1.Controls.Add(this.CHK_4MovesLvl1);
@@ -132,10 +136,20 @@
 			this.groupBox1.Controls.Add(this.CHK_HMs);
 			this.groupBox1.Location = new System.Drawing.Point(296, 65);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(95, 343);
+			this.groupBox1.Size = new System.Drawing.Size(95, 400);
 			this.groupBox1.TabIndex = 6;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Options";
+			// 
+			// CHK_1Damaging
+			// 
+			this.CHK_1Damaging.AutoSize = true;
+			this.CHK_1Damaging.Location = new System.Drawing.Point(6, 159);
+			this.CHK_1Damaging.Name = "CHK_1Damaging";
+			this.CHK_1Damaging.Size = new System.Drawing.Size(72, 43);
+			this.CHK_1Damaging.TabIndex = 15;
+			this.CHK_1Damaging.Text = "Ensure at\nleast 1 is\ndamaging";
+			this.CHK_1Damaging.UseVisualStyleBackColor = true;
 			// 
 			// CHK_NoFixedDamage
 			// 
@@ -312,21 +326,35 @@
 			this.B_Metronome.UseVisualStyleBackColor = true;
 			this.B_Metronome.Click += new System.EventHandler(this.B_Metronome_Click);
 			// 
-			// CHK_1Damaging
+			// CHK_OrderByPower
 			// 
-			this.CHK_1Damaging.AutoSize = true;
-			this.CHK_1Damaging.Location = new System.Drawing.Point(6, 159);
-			this.CHK_1Damaging.Name = "CHK_1Damaging";
-			this.CHK_1Damaging.Size = new System.Drawing.Size(72, 43);
-			this.CHK_1Damaging.TabIndex = 15;
-			this.CHK_1Damaging.Text = "Ensure at\nleast 1 is\ndamaging";
-			this.CHK_1Damaging.UseVisualStyleBackColor = true;
+			this.CHK_OrderByPower.AutoSize = true;
+			this.CHK_OrderByPower.Checked = true;
+			this.CHK_OrderByPower.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.CHK_OrderByPower.Location = new System.Drawing.Point(5, 339);
+			this.CHK_OrderByPower.Name = "CHK_OrderByPower";
+			this.CHK_OrderByPower.Size = new System.Drawing.Size(66, 30);
+			this.CHK_OrderByPower.TabIndex = 16;
+			this.CHK_OrderByPower.Text = "Order by\nPower";
+			this.CHK_OrderByPower.UseVisualStyleBackColor = true;
+			// 
+			// CHK_RandomFirstMove
+			// 
+			this.CHK_RandomFirstMove.AutoSize = true;
+			this.CHK_RandomFirstMove.Checked = true;
+			this.CHK_RandomFirstMove.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.CHK_RandomFirstMove.Location = new System.Drawing.Point(4, 370);
+			this.CHK_RandomFirstMove.Name = "CHK_RandomFirstMove";
+			this.CHK_RandomFirstMove.Size = new System.Drawing.Size(88, 30);
+			this.CHK_RandomFirstMove.TabIndex = 17;
+			this.CHK_RandomFirstMove.Text = "Random First\nMove";
+			this.CHK_RandomFirstMove.UseVisualStyleBackColor = true;
 			// 
 			// LevelUpEditor6
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(404, 412);
+			this.ClientSize = new System.Drawing.Size(404, 469);
 			this.Controls.Add(this.B_Metronome);
 			this.Controls.Add(this.PB_MonSprite);
 			this.Controls.Add(this.groupBox1);
@@ -377,5 +405,7 @@
         private System.Windows.Forms.CheckBox CHK_NoFixedDamage;
         private System.Windows.Forms.Button B_Metronome;
 		private System.Windows.Forms.CheckBox CHK_1Damaging;
+		private System.Windows.Forms.CheckBox CHK_OrderByPower;
+		private System.Windows.Forms.CheckBox CHK_RandomFirstMove;
 	}
 }

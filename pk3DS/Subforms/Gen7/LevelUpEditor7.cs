@@ -152,6 +152,8 @@ namespace pk3DS
                 BannedMoves = banned,
                 Learn4Level1 = CHK_4MovesLvl1.Checked,
 				AtLeast1Damaging = CHK_1Damaging.Checked,
+				OrderByPower = CHK_OrderByPower.Checked,
+				RandomFirstMove = CHK_RandomFirstMove.Checked,
             };
             rand.Execute();
             sets.Select(z => z.Write()).ToArray().CopyTo(files, 0);

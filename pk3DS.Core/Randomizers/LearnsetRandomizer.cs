@@ -32,6 +32,7 @@ namespace pk3DS.Core.Randomizers
         public bool Learn4Level1 = false;
         public bool AtLeast1Damaging = false;
         public bool OrderByPower = true;
+        public bool RandomFirstMove = false;
 
         public bool STAB { set => moverand.rSTAB = value; }
         public IList<int> BannedMoves { set => moverand.BannedMoves = value; }
@@ -111,14 +112,24 @@ namespace pk3DS.Core.Randomizers
             int[] moves = new int[count];
             if (count == 0)
                 return moves;
-            moves[0] = STABFirst ? moverand.GetRandomFirstMove(index) : moverand.GetRandomFirstMoveAny();
-            var rand = moverand.GetRandomLearnset(index, count - 1);
+            if (!RandomFirstMove)
+            {
+	            moves[0] = STABFirst ? moverand.GetRandomFirstMove(index) : moverand.GetRandomFirstMoveAny();
+	            var rand = moverand.GetRandomLearnset(index, count - 1);
 
-            // STAB Moves (if requested) come first; randomize the order of moves
-            Util.Shuffle(rand);
+	            // STAB Moves (if requested) come first; randomize the order of moves
+	            Util.Shuffle(rand);
+	            if (OrderByPower)
+		            moverand.ReorderMovesPower(rand);
+	            rand.CopyTo(moves, 1);
+	            return moves;
+            }
+
+            moves = moverand.GetRandomLearnset(index, count);
+
+            Util.Shuffle(moves);
             if (OrderByPower)
-                moverand.ReorderMovesPower(rand);
-            rand.CopyTo(moves, 1);
+	            moverand.ReorderMovesPower(moves);
             return moves;
         }
 
